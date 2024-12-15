@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI技术探索与应用 | 个人博客</title>
+    <title>AI探索者 | AI技术与应用分享</title>
     <style>
         :root {
             --primary-color: #2563eb;
@@ -25,9 +25,10 @@
             background-color: var(--background-color);
         }
 
+        /* 导航栏 */
         header {
             background-color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
             top: 0;
@@ -71,34 +72,67 @@
             color: var(--primary-color);
         }
 
-        main {
+        /* 标签导航区 */
+        .tags-section {
+            background: white;
+            padding: 1rem 0;
+            margin-top: var(--header-height);
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .tags-container {
             max-width: 1200px;
-            margin: calc(var(--header-height) + 2rem) auto 2rem;
+            margin: 0 auto;
+            padding: 0.5rem 2rem;
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .tags-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tag-btn {
+            padding: 0.5rem 1rem;
+            background-color: #f3f4f6;
+            color: #374151;
+            border: none;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .tag-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* 主要内容区 */
+        .main-container {
+            max-width: 1200px;
+            margin: 2rem auto;
             padding: 0 2rem;
             display: grid;
             grid-template-columns: 1fr 300px;
             gap: 2rem;
         }
 
-        .content {
+        /* 文章列表 */
+        .posts-section {
             background: white;
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
-        .sidebar {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            height: fit-content;
-        }
-
         .post-preview {
             margin-bottom: 2rem;
             padding-bottom: 2rem;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e5e7eb;
         }
 
         .post-preview:last-child {
@@ -109,9 +143,11 @@
 
         .post-title {
             font-size: 1.5rem;
-            color: var(--text-color);
-            margin-bottom: 0.5rem;
+            color: #1a1a1a;
             text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+            font-weight: 600;
         }
 
         .post-title:hover {
@@ -120,32 +156,54 @@
 
         .post-meta {
             font-size: 0.875rem;
-            color: #64748b;
+            color: #6b7280;
             margin-bottom: 1rem;
         }
 
-        .tag {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            background-color: rgba(37, 99, 235, 0.1);
-            color: var(--primary-color);
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            margin-right: 0.5rem;
+        /* 工具区域 */
+        .tools-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .tool-card {
+            padding: 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            transition: all 0.2s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .tool-title {
+            font-weight: 600;
             margin-bottom: 0.5rem;
+            color: #1a1a1a;
         }
 
-        .about-me {
-            margin-bottom: 2rem;
+        .tool-description {
+            font-size: 0.875rem;
+            color: #6b7280;
         }
 
+        /* 响应式设计 */
         @media (max-width: 768px) {
-            main {
+            .main-container {
                 grid-template-columns: 1fr;
             }
-            
+
             nav ul {
                 display: none;
+            }
+
+            .posts-section, .tools-section {
+                padding: 1rem;
             }
         }
     </style>
@@ -156,55 +214,65 @@
             <a href="/" class="logo">AI探索者</a>
             <nav>
                 <ul>
-                    <li><a href="#home">首页</a></li>
-                    <li><a href="#ai-tutorials">AI教程</a></li>
-                    <li><a href="#tools">实用工具</a></li>
-                    <li><a href="#about">关于我</a></li>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/ai-tutorials">教程</a></li>
+                    <li><a href="/about">关于</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
-        <div class="content">
-            <article class="post-preview">
-                <a href="/posts/2024/12/chatgpt-prompt-guide.html" class="post-title">ChatGPT使用技巧：如何写出更好的Prompt</a>
-                <div class="post-meta">发布于 2024年12月15日 · 阅读时间 10分钟</div>
-                <p>在这篇文章中，我将分享一些实用的ChatGPT提示工程技巧，帮助你获得更好的对话效果...</p>
-                <div class="tags">
-                    <span class="tag">ChatGPT</span>
-                    <span class="tag">Prompt工程</span>
-                    <span class="tag">AI应用</span>
-                </div>
-            </article>
-
-            <article class="post-preview">
-                <a href="#" class="post-title">2024年最值得关注的AI工具TOP10</a>
-                <div class="post-meta">发布于 2024年12月10日 · 阅读时间 15分钟</div>
-                <p>随着人工智能技术的快速发展，越来越多优秀的AI工具涌现。本文将介绍10个在2024年最值得关注的AI工具...</p>
-                <div class="tags">
-                    <span class="tag">AI工具</span>
-                    <span class="tag">效率提升</span>
-                    <span class="tag">软件推荐</span>
-                </div>
-            </article>
+    <section class="tags-section">
+        <div class="tags-container">
+            <button class="tag-btn">所有文章</button>
+            <button class="tag-btn">ChatGPT技巧</button>
+            <button class="tag-btn">Prompt工程</button>
+            <button class="tag-btn">AI绘画</button>
+            <button class="tag-btn">效率工具</button>
+            <button class="tag-btn">AI新闻</button>
+            <button class="tag-btn">深度学习</button>
+            <button class="tag-btn">机器学习</button>
         </div>
+    </section>
 
-        <aside class="sidebar">
-            <div class="about-me">
-                <h3>关于我</h3>
-                <p>AI技术爱好者，专注于探索AI在实际工作中的应用，分享AI相关教程和使用经验。</p>
+    <main class="main-container">
+        <section class="posts-section">
+            <article class="post-preview">
+                <a href="/posts/2024/12/chatgpt-prompt-guide.html" class="post-title">
+                    ChatGPT使用技巧：如何写出更好的Prompt
+                </a>
+                <div class="post-meta">
+                    发布于 2024年12月15日 · 阅读时间 10分钟
+                </div>
+                <p>在与ChatGPT交互时，如何提出问题往往决定了你能获得多好的回答。本文将分享一些实用的提示工程技巧，帮助你更好地使用ChatGPT...</p>
+            </article>
+
+            <article class="post-preview">
+                <a href="#" class="post-title">
+                    2024年最值得关注的AI工具TOP10
+                </a>
+                <div class="post-meta">
+                    发布于 2024年12月10日 · 阅读时间 15分钟
+                </div>
+                <p>随着人工智能技术的快速发展，越来越多优秀的AI工具涌现。本文将介绍10个在2024年最值得关注的AI工具...</p>
+            </article>
+        </section>
+
+        <aside class="tools-section">
+            <h2 style="margin-bottom: 1rem">实用工具</h2>
+            <div class="tool-card">
+                <div class="tool-title">Prompt生成器</div>
+                <p class="tool-description">快速生成高质量的ChatGPT提示词，提高对话效率。</p>
             </div>
 
-            <div class="popular-tags">
-                <h3>热门标签</h3>
-                <div class="tags">
-                    <span class="tag">ChatGPT</span>
-                    <span class="tag">AI绘画</span>
-                    <span class="tag">效率工具</span>
-                    <span class="tag">Prompt</span>
-                    <span class="tag">教程</span>
-                </div>
+            <div class="tool-card">
+                <div class="tool-title">AI图片优化器</div>
+                <p class="tool-description">一键优化AI生成的图片，提升画质和细节表现。</p>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-title">文本转语音</div>
+                <p class="tool-description">将文本转换为自然的语音，支持多种语言和声音。</p>
             </div>
         </aside>
     </main>
