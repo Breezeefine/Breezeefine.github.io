@@ -3,82 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的第一个网站</title>
+    <title>AI技术探索与应用 | 个人博客</title>
     <style>
+        :root {
+            --primary-color: #2563eb;
+            --background-color: #f8fafc;
+            --text-color: #334155;
+            --header-height: 60px;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
         }
 
         header {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
 
-        nav {
-            background-color: #f4f4f4;
-            padding: 1rem;
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            justify-content: center;
             gap: 2rem;
         }
 
         nav a {
             text-decoration: none;
-            color: #333;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
         }
 
         main {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            max-width: 1200px;
+            margin: calc(var(--header-height) + 2rem) auto 2rem;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
         }
 
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+        .content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .sidebar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+
+        .post-preview {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .post-preview:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .post-title {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            text-decoration: none;
+        }
+
+        .post-title:hover {
+            color: var(--primary-color);
+        }
+
+        .post-meta {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-me {
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>欢迎来到我的网站</h1>
+        <div class="header-content">
+            <a href="/" class="logo">AI探索者</a>
+            <nav>
+                <ul>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#ai-tutorials">AI教程</a></li>
+                    <li><a href="#tools">实用工具</a></li>
+                    <li><a href="#about">关于我</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#home">首页</a></li>
-            <li><a href="#about">关于</a></li>
-            <li><a href="#services">服务</a></li>
-            <li><a href="#contact">联系我们</a></li>
-        </ul>
-    </nav>
-
     <main>
-        <h2>网站介绍</h2>
-        <p>这是一个简单的网站示例。我们可以在这里添加更多的内容和功能。</p>
-        <p>这个网站使用了基本的HTML和CSS来创建布局和样式。</p>
-    </main>
+        <div class="content">
+            <article class="post-preview">
+                <a href="#" class="post-title">ChatGPT使用技巧：如何写出更好的Prompt</a>
+                <div class="post-meta">发布于 2024年3月15日 · 阅读时间 10分钟</div>
+                <p>在这篇文章中，我将分享一些实用的ChatGPT提示工程技巧，帮助你获得更好的对话效果...</p>
+                <div class="tags">
+                    <span class="tag">ChatGPT</span>
+                    <span class="tag">Prompt工程</span>
+                    <span class="tag">AI应用</span>
+                </div>
+            </article>
 
-    <footer>
-        <p>&copy; 2024 我的网站. 保留所有权利。</p>
-    </footer>
+            <article class="post-preview">
+                <a href="#" class="post-title">2024年最值得关注的AI工具TOP10</a>
+                <div class="post-meta">发布于 2024年3月10日 · 阅读时间 15分钟</div>
+                <p>随着人工智能技术的快速发展，越来越多优秀的AI工具涌现。本文将介绍10个在2024年最值得关注的AI工具...</p>
+                <div class="tags">
+                    <span class="tag">AI工具</span>
+                    <span class="tag">效率提升</span>
+                    <span class="tag">软件推荐</span>
+                </div>
+            </article>
+        </div>
+
+        <aside class="sidebar">
+            <div class="about-me">
+                <h3>关于我</h3>
+                <p>AI技术爱好者，专注于探索AI在实际工作中的应用，分享AI相关教程和使用经验。</p>
+            </div>
+
+            <div class="popular-tags">
+                <h3>热门标签</h3>
+                <div class="tags">
+                    <span class="tag">ChatGPT</span>
+                    <span class="tag">AI绘画</span>
+                    <span class="tag">效率工具</span>
+                    <span class="tag">Prompt</span>
+                    <span class="tag">教程</span>
+                </div>
+            </div>
+        </aside>
+    </main>
 </body>
 </html>
