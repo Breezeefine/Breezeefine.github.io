@@ -25,7 +25,6 @@
             background-color: var(--background-color);
         }
 
-        /* 导航栏 */
         header {
             background-color: white;
             box-shadow: 0 1px 2px rgba(0,0,0,0.1);
@@ -72,7 +71,6 @@
             color: var(--primary-color);
         }
 
-        /* 标签导航区 */
         .tags-section {
             background: white;
             padding: 1rem 0;
@@ -111,7 +109,11 @@
             color: white;
         }
 
-        /* 主要内容区 */
+        .tag-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
         .main-container {
             max-width: 1200px;
             margin: 2rem auto;
@@ -121,7 +123,6 @@
             gap: 2rem;
         }
 
-        /* 文章列表 */
         .posts-section {
             background: white;
             padding: 2rem;
@@ -160,7 +161,6 @@
             margin-bottom: 1rem;
         }
 
-        /* 工具区域 */
         .tools-section {
             background: white;
             padding: 1.5rem;
@@ -192,7 +192,6 @@
             color: #6b7280;
         }
 
-        /* 响应式设计 */
         @media (max-width: 768px) {
             .main-container {
                 grid-template-columns: 1fr;
@@ -224,20 +223,20 @@
 
     <section class="tags-section">
         <div class="tags-container">
-            <button class="tag-btn">所有文章</button>
-            <button class="tag-btn">ChatGPT技巧</button>
-            <button class="tag-btn">Prompt工程</button>
-            <button class="tag-btn">AI绘画</button>
-            <button class="tag-btn">效率工具</button>
-            <button class="tag-btn">AI新闻</button>
-            <button class="tag-btn">深度学习</button>
-            <button class="tag-btn">机器学习</button>
+            <button class="tag-btn active" data-tag="all">所有文章</button>
+            <button class="tag-btn" data-tag="chatgpt">ChatGPT技巧</button>
+            <button class="tag-btn" data-tag="prompt工程">Prompt工程</button>
+            <button class="tag-btn" data-tag="ai绘画">AI绘画</button>
+            <button class="tag-btn" data-tag="效率工具">效率工具</button>
+            <button class="tag-btn" data-tag="ai新闻">AI新闻</button>
+            <button class="tag-btn" data-tag="深度学习">深度学习</button>
+            <button class="tag-btn" data-tag="机器学习">机器学习</button>
         </div>
     </section>
 
     <main class="main-container">
         <section class="posts-section">
-            <article class="post-preview">
+            <article class="post-preview" data-tags="chatgpt,prompt工程,ai应用">
                 <a href="/posts/2024/12/chatgpt-prompt-guide.html" class="post-title">
                     ChatGPT使用技巧：如何写出更好的Prompt
                 </a>
@@ -247,7 +246,7 @@
                 <p>在与ChatGPT交互时，如何提出问题往往决定了你能获得多好的回答。本文将分享一些实用的提示工程技巧，帮助你更好地使用ChatGPT...</p>
             </article>
 
-            <article class="post-preview">
+            <article class="post-preview" data-tags="ai工具,效率工具,产品评测">
                 <a href="#" class="post-title">
                     2024年最值得关注的AI工具TOP10
                 </a>
@@ -276,5 +275,32 @@
             </div>
         </aside>
     </main>
+
+    <script>
+        // 标签筛选功能
+        const tagButtons = document.querySelectorAll('.tag-btn');
+        const articles = document.querySelectorAll('.post-preview');
+
+        tagButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 移除所有按钮的激活状态
+                tagButtons.forEach(btn => btn.classList.remove('active'));
+                // 添加当前按钮的激活状态
+                button.classList.add('active');
+
+                const selectedTag = button.dataset.tag.toLowerCase();
+
+                // 筛选文章
+                articles.forEach(article => {
+                    if (selectedTag === 'all') {
+                        article.style.display = 'block';
+                    } else {
+                        const articleTags = article.dataset.tags.toLowerCase().split(',');
+                        article.style.display = articleTags.includes(selectedTag) ? 'block' : 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
