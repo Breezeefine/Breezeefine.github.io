@@ -18,6 +18,7 @@ jobs:
           node-version: '16'
           
       - name: Install and Build 🔧
+        working-directory: my-card-website
         run: |
           npm install
           npm run build:h5
@@ -26,5 +27,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist/build/h5
+          folder: my-card-website/dist/build/h5
           clean: true 
