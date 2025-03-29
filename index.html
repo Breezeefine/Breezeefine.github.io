@@ -5,53 +5,222 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WildCard - 虚拟信用卡支付服务</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
         }
+
+        body {
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
-        header {
-            background: linear-gradient(135deg, #6366F1, #3B82F6);
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
-            border-radius: 0 0 10px 10px;
+
+        /* 导航栏 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
         }
-        h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        .subtitle {
-            font-size: 1.2rem;
-            margin-top: 10px;
-            opacity: 0.9;
-        }
-        .cta-button {
-            display: inline-block;
-            background-color: white;
-            color: #3B82F6;
-            text-decoration: none;
-            padding: 12px 30px;
-            margin-top: 20px;
-            border-radius: 25px;
+
+        .logo {
+            display: flex;
+            align-items: center;
             font-weight: bold;
-            transition: all 0.3s ease;
+            font-size: 24px;
+            color: #3498db;
         }
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+        .logo-span {
+            color: #2c3e50;
+            margin-left: 5px;
         }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background-color: #3498db;
+            border-radius: 8px;
+            margin-right: 10px;
+            position: relative;
+        }
+
+        .logo-icon:before {
+            content: "W";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #34495e;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid #3498db;
+            color: #3498db;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+
+        /* 英雄区域 */
+        .hero {
+            display: flex;
+            margin-top: 30px;
+            gap: 40px;
+            align-items: center;
+            padding-bottom: 50px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-title {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-desc {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .card-visual {
+            width: 80%;
+            height: 220px;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            border-radius: 16px;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 20px 30px rgba(52, 152, 219, 0.2);
+            color: white;
+        }
+
+        .card-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .card-chip {
+            width: 40px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            margin-right: 15px;
+        }
+
+        .card-network {
+            margin-left: auto;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .card-number {
+            display: flex;
+            gap: 15px;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .card-details {
+            display: flex;
+            justify-content: space-between;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+
+        .section {
+            padding: 50px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 35px;
+        }
+
         .main-content {
             margin-top: 40px;
             text-align: center;
         }
+
         .redirect-message {
             background-color: #fff;
             border-radius: 8px;
@@ -67,7 +236,7 @@
         <nav>
             <div class="logo">
                 <div class="logo-icon"></div>
-                <div>Wild<span>Card</span></div>
+                <div>Wild<span class="logo-span">Card</span></div>
             </div>
             <div class="nav-links">
                 <a href="#">功能特点</a>
@@ -85,9 +254,52 @@
         <!-- 英雄区域 -->
         <div class="hero">
             <div class="hero-content">
-                <h1>轻松实现国际支付<br>一分钟开通虚拟信用卡</h1>
-                <p>WildCard为您提供便捷的跨境支付解决方案，支持ChatGPT Plus、Claude Pro等国际服务订阅，支付宝直充，无需复杂流程。</p>
-                <a href="my-card-website/dist/build/h5/" class="btn btn-primary">立即开卡 (¥9.9)</a>
+                <h1 class="hero-title">轻松实现国际支付<br>一分钟开通虚拟信用卡</h1>
+                <p class="hero-desc">WildCard为您提供便捷的跨境支付解决方案，支持ChatGPT Plus、Claude Pro等国际服务订阅，支付宝直充，无需复杂流程。</p>
+                <a href="my-card-website/dist/build/h5/" class="btn btn-primary hero-btn">立即开卡 (¥9.9)</a>
+            </div>
+            <div class="hero-image">
+                <div class="card-visual">
+                    <div class="card-logo">
+                        <div class="card-chip"></div>
+                        <div class="card-network">VISA</div>
+                    </div>
+                    <div class="card-number">
+                        <span>4242</span>
+                        <span>••••</span>
+                        <span>••••</span>
+                        <span>••••</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="card-holder">WILD CARD USER</div>
+                        <div class="card-expiry">09/28</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section" id="features">
+        <div class="container">
+            <h2 class="section-title">核心功能</h2>
+            <p class="section-subtitle">为您打造无缝的跨境支付体验</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💳</div>
+                    <h3>虚拟VISA卡</h3>
+                    <p>提供可用于国际支付的虚拟信用卡，全球通用，安全可靠。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>1分钟开卡</h3>
+                    <p>快速完成KYC身份验证，立即获得您的虚拟卡信息。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🇺🇸</div>
+                    <h3>美国账单地址</h3>
+                    <p>提供美国账单地址，轻松订阅需要美国地址的国际服务。</p>
+                </div>
             </div>
         </div>
     </div>
