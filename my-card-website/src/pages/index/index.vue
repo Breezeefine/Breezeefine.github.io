@@ -1,170 +1,172 @@
 <template>
-	<view class="container">
-		<!-- 导航栏 -->
-		<view class="nav">
-			<view class="logo">
-				<view class="logo-icon"></view>
-				<text>Wild<text class="logo-span">Card</text></text>
+	<view class="page-container">
+		<view class="container">
+			<!-- 导航栏 -->
+			<view class="nav">
+				<view class="logo">
+					<view class="logo-icon"></view>
+					<text>Wild<text class="logo-span">Card</text></text>
+				</view>
+				<view class="nav-links">
+					<text @click="navigate('features')" class="nav-link">功能特点</text>
+					<text @click="navigate('articles')" class="nav-link">文章资讯</text>
+					<text @click="navigate('services')" class="nav-link">应用场景</text>
+					<text @click="navigate('steps')" class="nav-link">使用步骤</text>
+					<text @click="navigate('pricing')" class="nav-link">定价</text>
+				</view>
+				<view class="nav-buttons">
+					<button class="btn btn-outline" @click="navigate('login')">登录</button>
+					<button class="btn btn-primary" @click="navigate('register')">立即注册</button>
+				</view>
 			</view>
-			<view class="nav-links">
-				<text @click="navigate('features')" class="nav-link">功能特点</text>
-				<text @click="navigate('articles')" class="nav-link">文章资讯</text>
-				<text @click="navigate('services')" class="nav-link">应用场景</text>
-				<text @click="navigate('steps')" class="nav-link">使用步骤</text>
-				<text @click="navigate('pricing')" class="nav-link">定价</text>
+			
+			<!-- 英雄区域 -->
+			<view class="hero">
+				<view class="hero-content">
+					<view class="hero-title">轻松实现国际支付<br>一分钟开通虚拟信用卡</view>
+					<view class="hero-desc">WildCard为您提供便捷的跨境支付解决方案，支持ChatGPT Plus、Claude Pro等国际服务订阅，支付宝直充，无需复杂流程。</view>
+					<button class="btn btn-primary hero-btn" @click="navigate('card')">立即开卡 (¥9.9)</button>
+				</view>
+				<view class="hero-image">
+					<view class="card-visual">
+						<view class="card-logo">
+							<view class="card-chip"></view>
+							<view class="card-network">VISA</view>
+						</view>
+						<view class="card-number">
+							<text>4242</text>
+							<text>••••</text>
+							<text>••••</text>
+							<text>••••</text>
+						</view>
+						<view class="card-details">
+							<view class="card-holder">WILD CARD USER</view>
+							<view class="card-expiry">09/28</view>
+						</view>
+					</view>
+				</view>
 			</view>
-			<view class="nav-buttons">
-				<button class="btn btn-outline" @click="navigate('login')">登录</button>
-				<button class="btn btn-primary" @click="navigate('register')">立即注册</button>
-			</view>
-		</view>
 		
-		<!-- 英雄区域 -->
-		<view class="hero">
-			<view class="hero-content">
-				<view class="hero-title">轻松实现国际支付<br>一分钟开通虚拟信用卡</view>
-				<view class="hero-desc">WildCard为您提供便捷的跨境支付解决方案，支持ChatGPT Plus、Claude Pro等国际服务订阅，支付宝直充，无需复杂流程。</view>
-				<button class="btn btn-primary hero-btn" @click="navigate('card')">立即开卡 (¥9.9)</button>
-			</view>
-			<view class="hero-image">
-				<view class="card-visual">
-					<view class="card-logo">
-						<view class="card-chip"></view>
-						<view class="card-network">VISA</view>
-					</view>
-					<view class="card-number">
-						<text>4242</text>
-						<text>••••</text>
-						<text>••••</text>
-						<text>••••</text>
-					</view>
-					<view class="card-details">
-						<view class="card-holder">WILD CARD USER</view>
-						<view class="card-expiry">09/28</view>
-					</view>
-				</view>
-			</view>
-		</view>
-	</view>
-	
-	<!-- 特点区域 -->
-	<view class="section" id="features">
-		<view class="container">
-			<view class="section-title">核心功能</view>
-			<view class="section-subtitle">为您打造无缝的跨境支付体验</view>
-			
-			<view class="feature-grid">
-				<view class="feature-card" v-for="(feature, index) in features" :key="index">
-					<view class="feature-icon">{{feature.icon}}</view>
-					<view class="feature-title">{{feature.title}}</view>
-					<view class="feature-desc">{{feature.desc}}</view>
-				</view>
-			</view>
-		</view>
-	</view>
-	
-	<!-- 文章预览区域 -->
-	<view class="section" id="articles">
-		<view class="container">
-			<view class="section-title">最新资讯</view>
-			<view class="section-subtitle">了解使用教程与平台动态</view>
-			
-			<view class="articles-grid">
-				<view class="article-card" v-for="(article, index) in articles" :key="index">
-					<view class="article-image" :style="{ backgroundImage: article.image }"></view>
-					<view class="article-content">
-						<text class="article-tag">{{article.tag}}</text>
-						<view class="article-title">{{article.title}}</view>
-						<view class="article-excerpt">{{article.excerpt}}</view>
-						<view class="article-meta">
-							<text class="article-date">{{article.date}}</text>
-							<text class="article-read-time">{{article.readTime}}</text>
+			<!-- 特点区域 -->
+			<view class="section" id="features">
+				<view class="container">
+					<view class="section-title">核心功能</view>
+					<view class="section-subtitle">为您打造无缝的跨境支付体验</view>
+					
+					<view class="feature-grid">
+						<view class="feature-card" v-for="(feature, index) in features" :key="index">
+							<view class="feature-icon">{{feature.icon}}</view>
+							<view class="feature-title">{{feature.title}}</view>
+							<view class="feature-desc">{{feature.desc}}</view>
 						</view>
 					</view>
 				</view>
 			</view>
 			
-			<view class="text-center view-more">
-				<button class="btn btn-outline" @click="navigate('articles')">查看全部文章</button>
+			<!-- 文章预览区域 -->
+			<view class="section" id="articles">
+				<view class="container">
+					<view class="section-title">最新资讯</view>
+					<view class="section-subtitle">了解使用教程与平台动态</view>
+					
+					<view class="articles-grid">
+						<view class="article-card" v-for="(article, index) in articles" :key="index">
+							<view class="article-image" :style="{ backgroundImage: article.image }"></view>
+							<view class="article-content">
+								<text class="article-tag">{{article.tag}}</text>
+								<view class="article-title">{{article.title}}</view>
+								<view class="article-excerpt">{{article.excerpt}}</view>
+								<view class="article-meta">
+									<text class="article-date">{{article.date}}</text>
+									<text class="article-read-time">{{article.readTime}}</text>
+								</view>
+							</view>
+						</view>
+					</view>
+					
+					<view class="text-center view-more">
+						<button class="btn btn-outline" @click="navigate('articles')">查看全部文章</button>
+					</view>
+				</view>
 			</view>
-		</view>
-	</view>
-	
-	<!-- 应用场景 -->
-	<view class="section" id="services">
-		<view class="container">
-			<view class="section-title">应用场景</view>
-			<view class="section-subtitle">满足您的各种国际服务订阅需求</view>
 			
-			<scroll-view class="cases-container" scroll-x="true" show-scrollbar="false">
-				<view class="case-card" v-for="(service, index) in services" :key="index">
-					<view :class="['case-icon', service.iconClass]">{{service.icon}}</view>
-					<view class="case-title">{{service.title}}</view>
-					<view class="case-desc">{{service.desc}}</view>
+			<!-- 应用场景 -->
+			<view class="section" id="services">
+				<view class="container">
+					<view class="section-title">应用场景</view>
+					<view class="section-subtitle">满足您的各种国际服务订阅需求</view>
+					
+					<scroll-view class="cases-container" scroll-x="true" show-scrollbar="false">
+						<view class="case-card" v-for="(service, index) in services" :key="index">
+							<view :class="['case-icon', service.iconClass]">{{service.icon}}</view>
+							<view class="case-title">{{service.title}}</view>
+							<view class="case-desc">{{service.desc}}</view>
+						</view>
+					</scroll-view>
 				</view>
-			</scroll-view>
-		</view>
-	</view>
-	
-	<!-- 使用步骤 -->
-	<view class="section" id="steps">
-		<view class="container">
-			<view class="section-title">使用流程</view>
-			<view class="section-subtitle">简单几步，开启您的国际支付之旅</view>
+			</view>
 			
-			<view class="steps">
-				<view class="step" v-for="(step, index) in steps" :key="index">
-					<view class="step-number">{{index + 1}}</view>
-					<view class="step-title">{{step.title}}</view>
-					<view class="step-desc">{{step.desc}}</view>
-				</view>
-			</view>
-		</view>
-	</view>
-	
-	<!-- 底部区域 -->
-	<view class="footer">
-		<view class="container">
-			<view class="footer-content">
-				<view class="footer-col">
-					<view class="footer-title">关于我们</view>
-					<view class="footer-links">
-						<view class="footer-link">公司简介</view>
-						<view class="footer-link">联系我们</view>
-						<view class="footer-link">服务条款</view>
-						<view class="footer-link">隐私政策</view>
-					</view>
-				</view>
-				<view class="footer-col">
-					<view class="footer-title">快速链接</view>
-					<view class="footer-links">
-						<view class="footer-link">开始使用</view>
-						<view class="footer-link">常见问题</view>
-						<view class="footer-link">费用说明</view>
-						<view class="footer-link">支付安全</view>
-					</view>
-				</view>
-				<view class="footer-col">
-					<view class="footer-title">支持服务</view>
-					<view class="footer-links">
-						<view class="footer-link">使用指南</view>
-						<view class="footer-link">服务支持</view>
-						<view class="footer-link">在线客服</view>
-						<view class="footer-link">问题反馈</view>
-					</view>
-				</view>
-				<view class="footer-col">
-					<view class="footer-title">关注我们</view>
-					<view class="social-links">
-						<view class="social-icon">W</view>
-						<view class="social-icon">T</view>
-						<view class="social-icon">F</view>
-						<view class="social-icon">I</view>
+			<!-- 使用步骤 -->
+			<view class="section" id="steps">
+				<view class="container">
+					<view class="section-title">使用流程</view>
+					<view class="section-subtitle">简单几步，开启您的国际支付之旅</view>
+					
+					<view class="steps">
+						<view class="step" v-for="(step, index) in steps" :key="index">
+							<view class="step-number">{{index + 1}}</view>
+							<view class="step-title">{{step.title}}</view>
+							<view class="step-desc">{{step.desc}}</view>
+						</view>
 					</view>
 				</view>
 			</view>
-			<view class="footer-bottom">
-				<view>© 2025 WildCard. 保留所有权利</view>
+			
+			<!-- 底部区域 -->
+			<view class="footer">
+				<view class="container">
+					<view class="footer-content">
+						<view class="footer-col">
+							<view class="footer-title">关于我们</view>
+							<view class="footer-links">
+								<view class="footer-link">公司简介</view>
+								<view class="footer-link">联系我们</view>
+								<view class="footer-link">服务条款</view>
+								<view class="footer-link">隐私政策</view>
+							</view>
+						</view>
+						<view class="footer-col">
+							<view class="footer-title">快速链接</view>
+							<view class="footer-links">
+								<view class="footer-link">开始使用</view>
+								<view class="footer-link">常见问题</view>
+								<view class="footer-link">费用说明</view>
+								<view class="footer-link">支付安全</view>
+							</view>
+						</view>
+						<view class="footer-col">
+							<view class="footer-title">支持服务</view>
+							<view class="footer-links">
+								<view class="footer-link">使用指南</view>
+								<view class="footer-link">服务支持</view>
+								<view class="footer-link">在线客服</view>
+								<view class="footer-link">问题反馈</view>
+							</view>
+						</view>
+						<view class="footer-col">
+							<view class="footer-title">关注我们</view>
+							<view class="social-links">
+								<view class="social-icon">W</view>
+								<view class="social-icon">T</view>
+								<view class="social-icon">F</view>
+								<view class="social-icon">I</view>
+							</view>
+						</view>
+					</view>
+					<view class="footer-bottom">
+						<view>© 2025 WildCard. 保留所有权利</view>
+					</view>
+				</view>
 			</view>
 		</view>
 	</view>
@@ -330,6 +332,11 @@
 		background-color: #f8f9fa;
 		color: #2c3e50;
 		line-height: 1.6;
+	}
+	
+	.page-container {
+		width: 100%;
+		overflow-x: hidden;
 	}
 
 	.container {
